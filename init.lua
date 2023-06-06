@@ -40,7 +40,7 @@ require('packer').startup(function()
 	use 'L3MON4D3/LuaSnip'
 	use 'saadparwaiz1/cmp_luasnip'
 	use 'mg979/vim-visual-multi'
-	use 'NMAC427/guess-indent.nvim'
+	use 'tpope/vim-sleuth'
 
 	use 'williamboman/mason.nvim'
 	use 'williamboman/mason-lspconfig.nvim'
@@ -103,12 +103,10 @@ end })
 
 require('nvim-autopairs').setup({})
 
-require('guess-indent').setup()
-
 -- Languages
 require('mason').setup()
 require('mason-lspconfig').setup({
-	ensure_installed = { 'gopls', 'rust_analyzer', 'tsserver', 'html', 'clangd', 'svelte', 'dartls' }
+	ensure_installed = { 'gopls', 'rust_analyzer', 'tsserver', 'html', 'clangd', 'svelte'  }
 })
 
 local lspconfig = require('lspconfig')
