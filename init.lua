@@ -81,6 +81,10 @@ vim.cmd([[colorscheme gruvbox-material]])
 
 -- Tree
 require('nvim-tree').setup({
+	on_attach = function(bufnr)
+		local api = require('nvim-tree')
+		vim.keymap.set('n', '+', api.focus, { noremap = true, silent = true })
+	end,
 	renderer = {
 		icons = {
 			show = {
