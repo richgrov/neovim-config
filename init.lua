@@ -32,6 +32,7 @@ require('packer').startup(function()
 
 	use 'navarasu/onedark.nvim'
 	use 'sainnhe/gruvbox-material'
+	use 'Mofiqul/dracula.nvim'
 
 	use 'nvim-tree/nvim-tree.lua'
 	use 'windwp/nvim-autopairs'
@@ -77,7 +78,7 @@ require('onedark').setup {
 require('onedark').load()
 
 vim.g.gruvbox_material_background = 'soft'
-vim.cmd([[colorscheme gruvbox-material]])
+vim.cmd([[colorscheme dracula-soft]])
 
 -- Tree
 require('nvim-tree').setup({
