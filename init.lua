@@ -112,7 +112,7 @@ require('nvim-autopairs').setup({})
 -- Languages
 require('mason').setup()
 require('mason-lspconfig').setup({
-	ensure_installed = { 'gopls', 'rust_analyzer', 'tsserver', 'html', 'clangd', 'svelte' }
+	ensure_installed = { 'gopls', 'rust_analyzer', 'tsserver', 'html', 'clangd', 'tailwindcss' }
 })
 
 local lspconfig = require('lspconfig')
