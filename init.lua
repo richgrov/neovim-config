@@ -42,6 +42,7 @@ require('packer').startup(function()
 	use 'saadparwaiz1/cmp_luasnip'
 	use 'mg979/vim-visual-multi'
 	use 'tpope/vim-sleuth'
+	use 'prettier/vim-prettier'
 
 	use 'williamboman/mason.nvim'
 	use 'williamboman/mason-lspconfig.nvim'
@@ -167,3 +168,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = vim.api.nvim_create_augroup("GoFormat", {}),
 })
 
+vim.g['prettier#autoformat'] = 1
+vim.g['prettier#autoformat_require_pragma'] = 0
