@@ -48,7 +48,10 @@ require('packer').startup(function()
 	use 'williamboman/mason-lspconfig.nvim'
 	use 'neovim/nvim-lspconfig'
 	use 'nvim-treesitter/nvim-treesitter'
+	use 'mfussenegger/nvim-dap'
+
 	use 'ray-x/go.nvim'
+	use 'leoluz/nvim-dap-go'
 
 	if packer_bootstrap then
 		require('packer').sync()
@@ -167,6 +170,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
   group = vim.api.nvim_create_augroup("GoFormat", {}),
 })
+
+vim.keymap.set('n', '<C-Q>', require 'dap.ui.widgets'.hover, {noremap = true})
+
+require('dap-go').setup()
 
 vim.g['prettier#autoformat'] = 1
 vim.g['prettier#autoformat_require_pragma'] = 0
