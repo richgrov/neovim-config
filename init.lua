@@ -172,6 +172,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 vim.keymap.set('n', '<C-Q>', require 'dap.ui.widgets'.hover, {noremap = true})
+vim.keymap.set('n', '<C-b>', require 'dap'.toggle_breakpoint, {noremap = true})
 
 require('dap-go').setup()
 
