@@ -30,10 +30,6 @@ local packer_bootstrap = ensure_packer()
 require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 
-	use 'navarasu/onedark.nvim'
-	use 'sainnhe/gruvbox-material'
-	use 'Mofiqul/dracula.nvim'
-
 	use 'nvim-tree/nvim-tree.lua'
 	use 'windwp/nvim-autopairs'
 	use 'hrsh7th/nvim-cmp'
@@ -65,24 +61,50 @@ require 'nvim-treesitter.configs'.setup{
 	}
 }
 
-require('onedark').setup {
-	highlights = {
-		['@function'] = { fg = '$blue' },
-		['@function.builtin'] = { fg = '$blue' },
-		['@parameter'] = { fg = '$fg' },
-		['@type.builtin'] = { fg = '$yellow' },
-		['@property'] = { fg = '$fg' },
-		['@field'] = { fg = '$fg' },
-		['@punctuation.bracket'] = { fg = '$fg' },
-		['@punctuation.brace'] = { fg = '$fg' },
-		['@punctuation.special'] = { fg = '$fg' },
-		['@constructor'] = { fmt = 'none' },
-	},
-}
-require('onedark').load()
+vim.api.nvim_set_hl(0, 'StatusLine', { ctermfg = 0, ctermbg = 7 })
+vim.api.nvim_set_hl(0, 'StatusLineNC', { ctermfg = 7, ctermbg = 0 })
 
-vim.g.gruvbox_material_background = 'soft'
-vim.cmd([[colorscheme dracula-soft]])
+vim.api.nvim_set_hl(0, '@function.macro', { ctermfg = 6 })
+vim.api.nvim_set_hl(0, '@function.builtin', { ctermfg = 6 })
+vim.api.nvim_set_hl(0, '@constant.builtin', { ctermfg = 6 })
+vim.api.nvim_set_hl(0, '@variable.builtin', { ctermfg = 6 })
+
+vim.api.nvim_set_hl(0, '@comment', { ctermfg = 7 })
+vim.api.nvim_set_hl(0, 'Comment', { ctermfg = 7 })
+vim.api.nvim_set_hl(0, 'LineNr', { ctermfg = 7 })
+vim.api.nvim_set_hl(0, 'EndOfBuffer', { ctermfg = 7 })
+vim.api.nvim_set_hl(0, 'NvimTreeWinSeparator', { ctermfg = 7 })
+
+vim.api.nvim_set_hl(0, '@type', { ctermfg = 9 })
+vim.api.nvim_set_hl(0, '@type.definition', { ctermfg = 9 })
+
+vim.api.nvim_set_hl(0, '@function', { ctermfg = 10 })
+vim.api.nvim_set_hl(0, '@method', { ctermfg = 10 })
+
+vim.api.nvim_set_hl(0, '@keyword', { ctermfg = 12 })
+vim.api.nvim_set_hl(0, '@include', { ctermfg = 12 })
+vim.api.nvim_set_hl(0, '@conditional', { ctermfg = 12 })
+vim.api.nvim_set_hl(0, '@repeat', { ctermfg = 12 })
+vim.api.nvim_set_hl(0, '@boolean', { ctermfg = 12 })
+vim.api.nvim_set_hl(0, '@storageclass', { ctermfg = 12 })
+vim.api.nvim_set_hl(0, '@exception', { ctermfg = 12 })
+vim.api.nvim_set_hl(0, '@type.qualifier', { ctermfg = 12 })
+
+vim.api.nvim_set_hl(0, '@string', { ctermfg = 14 })
+
+vim.api.nvim_set_hl(0, '@operator', { ctermfg = 15 })
+vim.api.nvim_set_hl(0, '@namespace', { ctermfg = 15 })
+vim.api.nvim_set_hl(0, '@variable', { ctermfg = 15 })
+vim.api.nvim_set_hl(0, '@constant', { ctermfg = 15 })
+vim.api.nvim_set_hl(0, '@parameter', { ctermfg = 15 })
+vim.api.nvim_set_hl(0, '@field', { ctermfg = 15 })
+vim.api.nvim_set_hl(0, '@property', { ctermfg = 15 })
+vim.api.nvim_set_hl(0, '@label', { ctermfg = 15 })
+vim.api.nvim_set_hl(0, '@constructor', { ctermfg = 15 })
+vim.api.nvim_set_hl(0, '@punctuation.bracket', { ctermfg = 15 })
+vim.api.nvim_set_hl(0, '@punctuation.delimiter', { ctermfg = 15 })
+vim.api.nvim_set_hl(0, '@punctuation.special', { ctermfg = 15 })
+vim.api.nvim_set_hl(0, '@definition.parameter', { ctermfg = 15 })
 
 -- Tree
 require('nvim-tree').setup({
