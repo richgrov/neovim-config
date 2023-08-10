@@ -55,56 +55,28 @@ require('packer').startup(function()
 end)
 
 -- Theme
+
 require 'nvim-treesitter.configs'.setup{
 	highlight = {
 		enable = true,
 	}
 }
 
+local function setHighlight(color, groups)
+	for _, group in ipairs(groups) do
+		vim.api.nvim_set_hl(0, group, { ctermfg = color })
+	end
+end
+
 vim.api.nvim_set_hl(0, 'StatusLine', { ctermfg = 0, ctermbg = 7 })
 vim.api.nvim_set_hl(0, 'StatusLineNC', { ctermfg = 7, ctermbg = 0 })
-
-vim.api.nvim_set_hl(0, '@function.macro', { ctermfg = 6 })
-vim.api.nvim_set_hl(0, '@function.builtin', { ctermfg = 6 })
-vim.api.nvim_set_hl(0, '@constant.builtin', { ctermfg = 6 })
-vim.api.nvim_set_hl(0, '@variable.builtin', { ctermfg = 6 })
-
-vim.api.nvim_set_hl(0, '@comment', { ctermfg = 7 })
-vim.api.nvim_set_hl(0, 'Comment', { ctermfg = 7 })
-vim.api.nvim_set_hl(0, 'LineNr', { ctermfg = 7 })
-vim.api.nvim_set_hl(0, 'EndOfBuffer', { ctermfg = 7 })
-vim.api.nvim_set_hl(0, 'NvimTreeWinSeparator', { ctermfg = 7 })
-
-vim.api.nvim_set_hl(0, '@type', { ctermfg = 9 })
-vim.api.nvim_set_hl(0, '@type.definition', { ctermfg = 9 })
-
-vim.api.nvim_set_hl(0, '@function', { ctermfg = 10 })
-vim.api.nvim_set_hl(0, '@method', { ctermfg = 10 })
-
-vim.api.nvim_set_hl(0, '@keyword', { ctermfg = 12 })
-vim.api.nvim_set_hl(0, '@include', { ctermfg = 12 })
-vim.api.nvim_set_hl(0, '@conditional', { ctermfg = 12 })
-vim.api.nvim_set_hl(0, '@repeat', { ctermfg = 12 })
-vim.api.nvim_set_hl(0, '@boolean', { ctermfg = 12 })
-vim.api.nvim_set_hl(0, '@storageclass', { ctermfg = 12 })
-vim.api.nvim_set_hl(0, '@exception', { ctermfg = 12 })
-vim.api.nvim_set_hl(0, '@type.qualifier', { ctermfg = 12 })
-
-vim.api.nvim_set_hl(0, '@string', { ctermfg = 14 })
-
-vim.api.nvim_set_hl(0, '@operator', { ctermfg = 15 })
-vim.api.nvim_set_hl(0, '@namespace', { ctermfg = 15 })
-vim.api.nvim_set_hl(0, '@variable', { ctermfg = 15 })
-vim.api.nvim_set_hl(0, '@constant', { ctermfg = 15 })
-vim.api.nvim_set_hl(0, '@parameter', { ctermfg = 15 })
-vim.api.nvim_set_hl(0, '@field', { ctermfg = 15 })
-vim.api.nvim_set_hl(0, '@property', { ctermfg = 15 })
-vim.api.nvim_set_hl(0, '@label', { ctermfg = 15 })
-vim.api.nvim_set_hl(0, '@constructor', { ctermfg = 15 })
-vim.api.nvim_set_hl(0, '@punctuation.bracket', { ctermfg = 15 })
-vim.api.nvim_set_hl(0, '@punctuation.delimiter', { ctermfg = 15 })
-vim.api.nvim_set_hl(0, '@punctuation.special', { ctermfg = 15 })
-vim.api.nvim_set_hl(0, '@definition.parameter', { ctermfg = 15 })
+setHighlight('DarkYellow', { '@function.macro', '@function.builtin', '@constant.builtin', '@variable.constant', '@lsp.type.macro.rust' })
+setHighlight('Yellow', { '@string' })
+setHighlight('DarkGray', { '@comment', 'Comment', 'LineNr', 'EndOfBuffer', 'NvimTreeWinSeparator' })
+setHighlight('Blue', { '@type', '@type.definition' })
+setHighlight('Green', { '@function', '@method', '@lsp.type.function.rust' })
+setHighlight('Red', { '@keyword', '@include', '@conditional', '@repeat', '@boolean', '@storageclass', '@exception', '@type.qualifier' })
+setHighlight('White', { '@operator', '@namespace', '@variable', '@constant', '@parameter', '@field', '@property', '@punctuation.bracket', '@punctuation.delimiter', '@punctuation.special', '@definition.parameter' })
 
 -- Tree
 require('nvim-tree').setup({
