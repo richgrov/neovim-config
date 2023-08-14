@@ -70,6 +70,7 @@ end
 
 vim.api.nvim_set_hl(0, 'StatusLine', { ctermfg = 0, ctermbg = 7 })
 vim.api.nvim_set_hl(0, 'StatusLineNC', { ctermfg = 7, ctermbg = 0 })
+vim.api.nvim_set_hl(0, 'NormalFloat', { ctermbg = 'DarkGray' })
 setHighlight('DarkYellow', { '@function.macro', '@function.builtin', '@constant.builtin', '@variable.constant', '@lsp.type.macro.rust' })
 setHighlight('Yellow', { '@string' })
 setHighlight('DarkGray', { '@comment', 'Comment', 'LineNr', 'EndOfBuffer', 'NvimTreeWinSeparator' })
