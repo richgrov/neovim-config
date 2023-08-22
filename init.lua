@@ -72,11 +72,11 @@ vim.api.nvim_set_hl(0, 'StatusLine', { ctermfg = 0, ctermbg = 7 })
 vim.api.nvim_set_hl(0, 'StatusLineNC', { ctermfg = 7, ctermbg = 0 })
 vim.api.nvim_set_hl(0, 'NormalFloat', { ctermbg = 'DarkGray' })
 
-setHighlight('DarkYellow', { '@function.macro', '@function.builtin', '@constant.builtin', '@variable.constant', '@lsp.type.macro.rust' })
+setHighlight('DarkYellow', { '@function.macro', '@function.builtin', '@constant.builtin', '@variable.constant' })
 setHighlight('Yellow', { '@string' })
 setHighlight('DarkGray', { '@comment', 'Comment', 'LineNr', 'EndOfBuffer', 'NvimTreeWinSeparator' })
 setHighlight('Blue', { '@type', '@type.definition', 'Type' })
-setHighlight('Green', { '@function', '@method', '@lsp.type.function.rust' })
+setHighlight('Green', { '@function', '@method' })
 setHighlight('Red', { '@keyword', '@include', '@conditional', '@repeat', '@boolean', '@storageclass', '@exception', '@type.qualifier' })
 setHighlight('White', { '@operator', '@namespace', '@variable', 'Identifier', '@constant', '@parameter', '@field', '@property', '@punctuation.bracket', '@punctuation.delimiter', '@punctuation.special', '@definition.parameter' })
 
@@ -116,6 +116,7 @@ require('mason-lspconfig').setup({
 
 local lspconfig = require('lspconfig')
 local lsp_on_attach = function(client, bufnr)
+	client.server_capabilities.semanticTokensProvider = nil
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
