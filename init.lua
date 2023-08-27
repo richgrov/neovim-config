@@ -84,6 +84,7 @@ setHighlight('White', { '@operator', '@namespace', '@variable', 'Identifier', '@
 require('nvim-tree').setup({
 	on_attach = function(bufnr)
 		local api = require('nvim-tree')
+		require'nvim-tree.api'.config.mappings.default_on_attach(bufnr)
 		vim.keymap.set('n', '+', api.focus, { noremap = true, silent = true })
 	end,
 	renderer = {
