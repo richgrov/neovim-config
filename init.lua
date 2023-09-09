@@ -74,7 +74,7 @@ vim.api.nvim_set_hl(0, 'NormalFloat', { ctermbg = 'DarkGray' })
 
 setHighlight('DarkYellow', { '@function.macro', '@function.builtin', '@constant.builtin', '@variable.constant' })
 setHighlight('Yellow', { '@string' })
-setHighlight('DarkGray', { '@comment', 'Comment', 'LineNr', 'EndOfBuffer', 'NvimTreeWinSeparator' })
+setHighlight('DarkGray', { '@comment', 'Comment', 'LineNr', 'EndOfBuffer', 'NvimTreeWinSeparator', '@keyword.jsdoc' })
 setHighlight('Blue', { '@type', '@type.definition', 'Type' })
 setHighlight('Green', { '@function', '@method' })
 setHighlight('Red', { '@keyword', '@include', '@conditional', '@repeat', '@boolean', '@storageclass', '@exception', '@type.qualifier' })
