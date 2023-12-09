@@ -46,8 +46,7 @@ require('packer').startup(function()
 	use 'nvim-treesitter/nvim-treesitter'
 	use 'mfussenegger/nvim-dap'
 
-	use 'fatih/vim-go'
-	use 'leoluz/nvim-dap-go'
+	use 'ray-x/go.nvim'
 
 	if packer_bootstrap then
 		require('packer').sync()
@@ -160,10 +159,17 @@ cmp.setup({
 	}, { name = 'buffer '}),
 })
 
+require('go').setup()
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.go",
+		callback = function()
+			require('go.format').goimport()
+		end,
+	group = vim.api.nvim_create_augroup("GoFormat", {}),
+})
+
 vim.keymap.set('n', '<C-Q>', require 'dap.ui.widgets'.hover, {noremap = true})
 vim.keymap.set('n', '<C-b>', require 'dap'.toggle_breakpoint, {noremap = true})
-
-require('dap-go').setup()
 
 vim.g['prettier#autoformat'] = 1
 vim.g['prettier#autoformat_require_pragma'] = 0
