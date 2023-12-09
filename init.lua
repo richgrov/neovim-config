@@ -71,13 +71,53 @@ vim.api.nvim_set_hl(0, 'StatusLine', { ctermfg = 0, ctermbg = 7 })
 vim.api.nvim_set_hl(0, 'StatusLineNC', { ctermfg = 7, ctermbg = 0 })
 vim.api.nvim_set_hl(0, 'NormalFloat', { ctermbg = 'DarkGray' })
 
-setHighlight('DarkYellow', { '@function.macro', '@function.builtin', '@constant.builtin', '@variable.constant' })
-setHighlight('Yellow', { '@string' })
-setHighlight('DarkGray', { '@comment', 'Comment', 'LineNr', 'EndOfBuffer', 'NvimTreeWinSeparator', '@keyword.jsdoc' })
-setHighlight('Blue', { '@type', '@type.definition', 'Type' })
-setHighlight('Green', { '@function', '@method' })
-setHighlight('Red', { '@keyword', '@include', '@conditional', '@repeat', '@boolean', '@storageclass', '@exception', '@type.qualifier' })
-setHighlight('White', { '@operator', '@namespace', '@variable', 'Identifier', '@constant', '@parameter', '@field', '@property', '@punctuation.bracket', '@punctuation.delimiter', '@punctuation.special', '@definition.parameter' })
+setHighlight('Green', {
+	'@string',
+	'@constant.builtin',
+	'@variable.constant',
+})
+
+setHighlight('DarkGray', {
+	'@comment',
+	'Comment',
+	'LineNr',
+	'EndOfBuffer',
+	'NvimTreeWinSeparator',
+	'@keyword.jsdoc',
+})
+setHighlight('Blue', {
+	'@function',
+	'@method',
+	'@type',
+	'@type.definition',
+	'Type',
+	'@function.macro',
+	'@function.builtin',
+})
+setHighlight('Magenta', {
+	'@keyword',
+	'@include',
+	'@conditional',
+	'@repeat',
+	'@boolean',
+	'@storageclass',
+	'@exception',
+	'@type.qualifier',
+})
+setHighlight('White', {
+	'@operator',
+	'@namespace',
+	'@variable',
+	'Identifier',
+	'@constant',
+	'@parameter',
+	'@field',
+	'@property',
+	'@punctuation.bracket',
+	'@punctuation.delimiter',
+	'@punctuation.special',
+	'@definition.parameter',
+})
 
 -- Tree
 require('nvim-tree').setup({
