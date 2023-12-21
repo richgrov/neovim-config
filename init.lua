@@ -30,7 +30,8 @@ local packer_bootstrap = ensure_packer()
 require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 
-	use 'nvim-tree/nvim-tree.lua'
+	use 'nvim-telescope/telescope.nvim'
+	use 'nvim-lua/plenary.nvim'
 	use 'windwp/nvim-autopairs'
 	use 'hrsh7th/nvim-cmp'
 	use 'hrsh7th/cmp-nvim-lsp'
@@ -119,32 +120,8 @@ setHighlight('White', {
 	'@definition.parameter',
 })
 
--- Tree
-require('nvim-tree').setup({
-	on_attach = function(bufnr)
-		local api = require('nvim-tree')
-		require'nvim-tree.api'.config.mappings.default_on_attach(bufnr)
-		vim.keymap.set('n', '+', api.focus, { noremap = true, silent = true })
-	end,
-	renderer = {
-		icons = {
-			show = {
-				file = false,
-				folder = false,
-				folder_arrow = false,
-				git = false,
-				modified = false,
-			},
-		},
-	},
-	git = {
-		ignore = false,
-	},
-})
-
-vim.api.nvim_create_autocmd({ 'VimEnter' }, { callback = function()
-	require('nvim-tree.api').tree.open()
-end })
+local telescope = require('telescope.builtin')
+vim.keymap.set('n', '-', telescope.find_files, { noremap = true, silent = true })
 
 require('nvim-autopairs').setup({})
 
