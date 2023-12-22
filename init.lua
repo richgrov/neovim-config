@@ -122,6 +122,7 @@ setHighlight('White', {
 
 local telescope = require('telescope.builtin')
 vim.keymap.set('n', '-', telescope.find_files, { noremap = true, silent = true })
+vim.keymap.set('n', '+', telescope.lsp_dynamic_workspace_symbols, { noremap = true, silent = true })
 
 require('nvim-autopairs').setup({})
 
