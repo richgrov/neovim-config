@@ -1,5 +1,6 @@
 -- Generic settings
 vim.wo.number = true
+vim.wo.relativenumber = true
 vim.o.tabstop = 3
 vim.o.shiftwidth = 3
 
