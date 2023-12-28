@@ -42,8 +42,6 @@ require('packer').startup(function()
 	use 'tpope/vim-sleuth'
 	use 'prettier/vim-prettier'
 
-	use 'williamboman/mason.nvim'
-	use 'williamboman/mason-lspconfig.nvim'
 	use 'neovim/nvim-lspconfig'
 	use 'nvim-treesitter/nvim-treesitter'
 	use 'mfussenegger/nvim-dap'
@@ -127,14 +125,11 @@ vim.keymap.set('n', '+', telescope.lsp_dynamic_workspace_symbols, { noremap = tr
 
 require('nvim-autopairs').setup({})
 
--- Languages
-require('mason').setup()
-require('mason-lspconfig').setup({
-	ensure_installed = { 'gopls', 'rust_analyzer', 'tsserver', 'html', 'clangd', 'tailwindcss', 'pyright' }
-})
-
+vim.lsp.set_log_level("warn")
 local lspconfig = require('lspconfig')
-local lsp_on_attach = function(client, bufnr)
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+function lsp_attach(client, bufnr)
 	client.server_capabilities.semanticTokensProvider = nil
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
@@ -144,21 +139,24 @@ local lsp_on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<C-p>', vim.lsp.buf.signature_help, bufopts)
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-require('mason-lspconfig').setup_handlers({
-	function(id)
-		lspconfig[id].setup({
-			on_attach = lsp_on_attach,
-			capabilities = capabilities,
-			settings = {
-				['rust-analyzer'] = {
-					procMacro = { enable = true },
-					assist = { importMergeBehaviour = 'last' },
-				}
-			}
-		})
-	end
-})
+local servers = { 'rust_analyzer' }
+for _, server in ipairs(servers) do
+	lspconfig[server].setup({
+		settings = {
+			["rust-analyzer"] = {
+				procMacro = { enable = true },
+				assist = { importMergeBeavior = 'last' },
+				imports = {
+					granularity = {
+						group = "module",
+					},
+				},
+			},
+		},
+		capabilities = capabilities,
+		on_attach = lsp_attach,
+	})
+end
 
 local cmp = require('cmp')
 local luasnip = require('luasnip')
