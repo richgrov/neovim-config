@@ -129,6 +129,8 @@ vim.lsp.set_log_level("warn")
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+local formatGroup = vim.api.nvim_create_augroup('LspFormatting', {})
+
 function lsp_attach(client, bufnr)
 	client.server_capabilities.semanticTokensProvider = nil
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -137,6 +139,17 @@ function lsp_attach(client, bufnr)
 	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 	vim.keymap.set('n', 'rn', vim.lsp.buf.rename, bufopts)
 	vim.keymap.set('n', '<C-p>', vim.lsp.buf.signature_help, bufopts)
+
+	if client.supports_method('textDocument/formatting') then
+		vim.api.nvim_clear_autocmds({ group = formatGroup, buffer = bufnr })
+		vim.api.nvim_create_autocmd('BufWritePre', {
+			group = formatGroup,
+			buffer = bufnr,
+			callback = function()
+				vim.lsp.buf.format()
+			end,
+		})
+	end
 end
 
 local servers = { 'rust_analyzer', 'tailwindcss' }
