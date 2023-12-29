@@ -139,7 +139,7 @@ function lsp_attach(client, bufnr)
 	vim.keymap.set('n', '<C-p>', vim.lsp.buf.signature_help, bufopts)
 end
 
-local servers = { 'rust_analyzer' }
+local servers = { 'rust_analyzer', 'tailwindcss' }
 for _, server in ipairs(servers) do
 	lspconfig[server].setup({
 		settings = {
