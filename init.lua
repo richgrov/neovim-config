@@ -145,7 +145,7 @@ function lsp_attach(client, bufnr)
 	vim.keymap.set('n', 'rn', vim.lsp.buf.rename, bufopts)
 	vim.keymap.set('n', '<C-p>', vim.lsp.buf.signature_help, bufopts)
 
-	if client.supports_method('textDocument/formatting') then
+	if client.name ~= "html" and client.supports_method('textDocument/formatting') then
 		vim.api.nvim_clear_autocmds({ group = formatGroup, buffer = bufnr })
 		vim.api.nvim_create_autocmd('BufWritePre', {
 			group = formatGroup,
@@ -157,7 +157,7 @@ function lsp_attach(client, bufnr)
 	end
 end
 
-local servers = { 'rust_analyzer', 'tailwindcss', 'gopls' }
+local servers = { 'rust_analyzer', 'tailwindcss', 'gopls', 'pyright', 'html' }
 for _, server in ipairs(servers) do
 	lspconfig[server].setup({
 		settings = {
