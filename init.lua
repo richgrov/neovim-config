@@ -88,6 +88,8 @@ setHighlight('Blue', {
 	'@method',
 	'@type',
 	'@type.definition',
+	'@tag',
+	'@constructor',
 	'Type',
 	'@function.macro',
 	'@function.builtin',
@@ -104,6 +106,7 @@ setHighlight('Magenta', {
 })
 setHighlight('White', {
 	'@operator',
+	'@tag.delimiter',
 	'@namespace',
 	'@variable',
 	'Identifier',
@@ -157,7 +160,7 @@ function lsp_attach(client, bufnr)
 	end
 end
 
-local servers = { 'rust_analyzer', 'tailwindcss', 'gopls', 'pyright', 'html' }
+local servers = { 'rust_analyzer', 'tailwindcss', 'gopls', 'pyright', 'html', 'tsserver' }
 for _, server in ipairs(servers) do
 	lspconfig[server].setup({
 		settings = {
