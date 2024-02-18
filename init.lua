@@ -66,10 +66,10 @@ local function setHighlight(color, groups)
 end
 
 vim.api.nvim_set_hl(0, 'StatusLine', { ctermfg = 0, ctermbg = 7 })
-vim.api.nvim_set_hl(0, 'StatusLineNC', { ctermfg = 7, ctermbg = 0 })
+vim.api.nvim_set_hl(0, 'StatusLineNC', { ctermfg = 7, ctermbg = 'DarkGray' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { ctermbg = 'DarkGray' })
 
-setHighlight('Green', {
+setHighlight(11, {
 	'@string',
 	'@constant.builtin',
 	'@variable.constant',
@@ -83,19 +83,15 @@ setHighlight('DarkGray', {
 	'NvimTreeWinSeparator',
 	'@keyword.jsdoc',
 })
-setHighlight('Blue', {
-	'@function',
-	'@method',
+setHighlight(10, {
 	'@type',
 	'@type.definition',
-	'@tag',
 	'@constructor',
 	'Type',
-	'@function.macro',
-	'@function.builtin',
 })
-setHighlight('Magenta', {
+setHighlight(9, {
 	'@keyword',
+	'@tag',
 	'@include',
 	'@conditional',
 	'@repeat',
@@ -103,6 +99,10 @@ setHighlight('Magenta', {
 	'@storageclass',
 	'@exception',
 	'@type.qualifier',
+	'@number',
+	'@function.macro',
+	'@function.builtin',
+	'@variable.builtin',
 })
 setHighlight('White', {
 	'@operator',
@@ -118,6 +118,8 @@ setHighlight('White', {
 	'@punctuation.delimiter',
 	'@punctuation.special',
 	'@definition.parameter',
+	'@function.builtin',
+	'@constructor.lua',
 })
 
 require('telescope').setup({
