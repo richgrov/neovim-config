@@ -71,6 +71,7 @@ vim.api.nvim_set_hl(0, 'NormalFloat', { ctermbg = 'DarkGray' })
 
 setHighlight(11, {
 	'@string',
+	'@string.special.url.html',
 	'@constant.builtin',
 	'@variable.constant',
 })
