@@ -84,12 +84,6 @@ setHighlight('DarkGray', {
 	'NvimTreeWinSeparator',
 	'@keyword.jsdoc',
 })
-setHighlight(10, {
-	'@type',
-	'@type.definition',
-	'@constructor',
-	'Type',
-})
 setHighlight(9, {
 	'@keyword',
 	'@tag',
@@ -121,6 +115,8 @@ setHighlight('White', {
 	'@definition.parameter',
 	'@function.builtin',
 	'@constructor.lua',
+	'@type',
+	'@constructor',
 })
 
 require('telescope').setup({
