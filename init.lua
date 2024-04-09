@@ -95,13 +95,16 @@ setHighlight(9, {
 	'@exception',
 	'@type.qualifier',
 	'@number',
+	'@float',
 	'@function.macro',
 	'@function.builtin',
 	'@variable.builtin',
+	'@constant.builtin',
 })
 setHighlight('White', {
 	'@operator',
 	'@tag.delimiter',
+	'@tag.attribute',
 	'@namespace',
 	'@variable',
 	'Identifier',
