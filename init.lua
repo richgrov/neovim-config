@@ -154,6 +154,7 @@ function lsp_attach(client, bufnr)
 	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 	vim.keymap.set('n', 'rn', vim.lsp.buf.rename, bufopts)
 	vim.keymap.set('n', '<C-p>', vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set('n', '<C-q>', vim.lsp.buf.code_action, bufopts)
 
 	if lsp_allowed(client.name) and client.supports_method('textDocument/formatting') then
 		vim.api.nvim_clear_autocmds({ group = formatGroup, buffer = bufnr })
