@@ -100,6 +100,7 @@ setHighlight(9, {
 	'@function.builtin',
 	'@variable.builtin',
 	'@constant.builtin',
+	'@type.builtin.cpp',
 })
 setHighlight('White', {
 	'@operator',
