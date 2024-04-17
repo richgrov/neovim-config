@@ -120,6 +120,7 @@ setHighlight('White', {
 	'@function.builtin',
 	'@constructor.lua',
 	'@type',
+	'Type',
 	'@constructor',
 })
 
