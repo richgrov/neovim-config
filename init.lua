@@ -84,7 +84,7 @@ setHighlight('DarkGray', {
 	'NvimTreeWinSeparator',
 	'@keyword.jsdoc',
 })
-setHighlight(9, {
+setHighlight('Magenta', {
 	'@keyword',
 	'@tag',
 	'@include',
