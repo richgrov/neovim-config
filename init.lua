@@ -101,6 +101,7 @@ setHighlight(9, {
 	'@variable.builtin',
 	'@constant.builtin',
 	'@type.builtin.cpp',
+	'PreProc',
 })
 setHighlight('White', {
 	'@operator',
