@@ -103,7 +103,7 @@ setHighlight(9, {
 	'@type.builtin.cpp',
 	'PreProc',
 })
-setHighlight('White', {
+setHighlight('NONE', {
 	'@operator',
 	'@tag.delimiter',
 	'@tag.attribute',
