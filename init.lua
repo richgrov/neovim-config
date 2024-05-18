@@ -170,7 +170,7 @@ function lsp_attach(client, bufnr)
 	end
 end
 
-local servers = { 'rust_analyzer', 'tailwindcss', 'gopls', 'pyright', 'html', 'cssls', 'tsserver', 'clangd' }
+local servers = { 'rust_analyzer', 'tailwindcss', 'gopls', 'pyright', 'html', 'cssls', 'tsserver', 'clangd', 'dartls' }
 for _, server in ipairs(servers) do
 	lspconfig[server].setup({
 		settings = {
