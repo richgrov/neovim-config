@@ -1,4 +1,9 @@
 -- Generic settings
+
+vim.cmd[[
+	autocmd BufNewFile,BufRead *.ino :set filetype=cpp
+]]
+
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.o.tabstop = 3
