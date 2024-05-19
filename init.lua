@@ -49,7 +49,6 @@ require('packer').startup(function()
 
 	use 'neovim/nvim-lspconfig'
 	use 'nvim-treesitter/nvim-treesitter'
-	use 'mfussenegger/nvim-dap'
 
 	if packer_bootstrap then
 		require('packer').sync()
@@ -211,9 +210,6 @@ cmp.setup({
 		{ name = 'luasnip' },
 	}, { name = 'buffer '}),
 })
-
-vim.keymap.set('n', '<C-Q>', require 'dap.ui.widgets'.hover, {noremap = true})
-vim.keymap.set('n', '<C-b>', require 'dap'.toggle_breakpoint, {noremap = true})
 
 vim.g['prettier#autoformat'] = 1
 vim.g['prettier#autoformat_require_pragma'] = 0
