@@ -1,13 +1,4 @@
--- Generic settings
-
-vim.cmd[[
-	autocmd BufNewFile,BufRead *.ino :set filetype=cpp
-]]
-
-vim.wo.number = true
-vim.wo.relativenumber = true
-vim.o.tabstop = 3
-vim.o.shiftwidth = 3
+vim.cmd.source(vim.fn.stdpath("config") .. "/vimrc.vim")
 
 -- https://vimtricks.com/p/vimtrick-moving-lines/
 vim.keymap.set('n', '<C-j>', ':m .+1<CR>==', {noremap = true})
