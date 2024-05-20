@@ -2,3 +2,4 @@ theme = "monokai"
 
 [editor]
 line-number = "relative"
+auto-format = true
