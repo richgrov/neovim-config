@@ -1,1 +1,4 @@
 theme = "monokai"
+
+[editor]
+line-number = "relative"
