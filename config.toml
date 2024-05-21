@@ -7,3 +7,4 @@ C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_befor
 [editor]
 line-number = "relative"
 auto-format = true
+cursor-shape = { insert = "bar" }
