@@ -1,4 +1,4 @@
-theme = "monokai"
+theme = "gruvbox"
 
 [keys.normal]
 C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
