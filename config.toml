@@ -10,3 +10,4 @@ auto-format = true
 cursor-shape = { insert = "bar" }
 completion-trigger-len = 1
 completion-timeout = 5
+mouse = false
