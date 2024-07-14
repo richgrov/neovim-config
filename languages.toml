@@ -3,12 +3,22 @@ name = "cpp"
 auto-format = true
 
 [[language]]
+name = "css"
+auto-format = true
+formatter = { command = "pnpx", args = ["prettier", "--parser", "css"] }
+
+[[language]]
 name = "c"
 auto-format = true
 
 [[language]]
 name = "c-sharp"
 auto-format = true
+
+[[language]]
+name = "html"
+auto-format = true
+formatter = { command = "pnpx", args = ["prettier", "--parser", "html"] }
 
 [[language]]
 name = "python"
