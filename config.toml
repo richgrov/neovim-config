@@ -1,4 +1,4 @@
-theme = "github_light"
+theme = "starlight"
 
 [keys.normal]
 C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
