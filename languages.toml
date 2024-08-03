@@ -30,6 +30,11 @@ language-servers = ["pyright"]
 auto-format = true
 formatter = { command = "black", args = ["-", "--quiet"]}
 
+[[language]]
+name = "rust"
+auto-format = true
+formatter = { command = "rustfmt", args = ["--edition", "2021"] }
+
 [language-server.pyright]
 command = "pyright-langserver"
 args = ["--stdio"]
