@@ -23,6 +23,7 @@ formatter = { command = "pnpx", args = ["prettier", "--parser", "html"] }
 [[language]]
 name = "javascript"
 auto-format = true
+formatter = { command = "bun", args = ["prettier", "--parser", "typescript"] }
 
 [[language]]
 name = "python"
