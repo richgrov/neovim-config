@@ -42,6 +42,20 @@ require("lazy").setup({
 		{ "https://github.com/prettier/vim-prettier" },
 		{ "nvim-lua/plenary.nvim" },
 		{
+			"https://github.com/yetone/avante.nvim",
+			dependencies = {
+				"stevearc/dressing.nvim",
+				"MunifTanjim/nui.nvim",
+				"nvim-lua/plenary.nvim",
+			},
+			config = {
+				version = false,
+				lazy = false,
+				build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false",
+				provider = "claude",
+			},
+		},
+		{
 			"windwp/nvim-autopairs",
 			event = "InsertEnter",
 			config = true,
