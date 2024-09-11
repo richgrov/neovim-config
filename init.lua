@@ -67,7 +67,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protoc
 local formatGroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local function lsp_allowed(name)
-	return name ~= "html" and name ~= "cssls" and name ~= "tsserver" and name ~= "tailwindcss"
+	return name ~= "html" and name ~= "cssls" and name ~= "ts_ls" and name ~= "tailwindcss"
 end
 
 local function lsp_attach(client, bufnr)
@@ -93,8 +93,8 @@ local function lsp_attach(client, bufnr)
 end
 
 local servers = {
-	"rust_analyzer", "tailwindcss", "gopls", "pyright", "html", "cssls", "tsserver", "clangd",
-	"dartls", "lua_ls"
+	"rust_analyzer", "tailwindcss", "gopls", "pyright", "html", "cssls", "ts_ls", "clangd",
+	"dartls", "lua_ls",
 }
 
 for _, server in ipairs(servers) do
