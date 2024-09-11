@@ -1,30 +1,68 @@
 vim.cmd.source(vim.fn.stdpath("config") .. "/vimrc.vim")
 
--- Packer
-local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-	
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-		vim.cmd [[packadd packer.nvim]]
-		return true
+-- bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out,                            "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
 	end
-	return false
 end
 
+vim.opt.rtp:prepend(lazypath)
+
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+-- Setup lazy.nvim
+require("lazy").setup({
+	spec = {
+		{
+			"ibhagwan/fzf-lua",
+			-- optional for icon support
+			dependencies = { "nvim-tree/nvim-web-devicons" },
+			config = function()
+				-- calling `setup` is optional for customization
+				require("fzf-lua").setup({})
+			end
+		},
+		{
+			"tpope/vim-sleuth"
+		},
+		{ "https://github.com/hrsh7th/nvim-cmp" },
+		{
+			"https://github.com/neovim/nvim-lspconfig"
+		},
+		{
+			"https://github.com/hrsh7th/cmp-nvim-lsp"
+		},
+		{
+			"https://github.com/L3MON4D3/LuaSnip"
+		},
+	},
+	-- Configure any other settings here. See the documentation for more details.
+	-- colorscheme that will be used when installing plugins.
+	-- automatically check for plugin updates
+	checker = { enabled = true },
+})
+
+--[[Packer
 local packer_bootstrap = ensure_packer()
 require('packer').startup(function()
-	use 'wbthomason/packer.nvim'
-
-	use 'nvim-telescope/telescope.nvim'
-	use 'nvim-lua/plenary.nvim'
-	use 'windwp/nvim-autopairs'
 	use 'hrsh7th/nvim-cmp'
 	use 'hrsh7th/cmp-nvim-lsp'
 	use 'L3MON4D3/LuaSnip'
 	use 'saadparwaiz1/cmp_luasnip'
-	use 'mg979/vim-visual-multi'
 	use 'tpope/vim-sleuth'
 	use 'prettier/vim-prettier'
 
@@ -34,7 +72,7 @@ require('packer').startup(function()
 	if packer_bootstrap then
 		require('packer').sync()
 	end
-end)
+end)]]
 
 -- Theme
 
@@ -121,7 +159,7 @@ local telescope = require('telescope.builtin')
 vim.keymap.set('n', '-', telescope.find_files, { noremap = true, silent = true })
 vim.keymap.set('n', '+', telescope.lsp_dynamic_workspace_symbols, { noremap = true, silent = true })
 
-require('nvim-autopairs').setup({})
+--require('nvim-autopairs').setup({})
 
 vim.lsp.set_log_level("warn")
 local lspconfig = require('lspconfig')
