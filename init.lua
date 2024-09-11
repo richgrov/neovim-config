@@ -24,7 +24,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
 		{
@@ -46,7 +45,6 @@ require("lazy").setup({
 			config = true,
 		},
 	},
-	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
 	-- automatically check for plugin updates
 	checker = { enabled = true },
@@ -55,19 +53,7 @@ require("lazy").setup({
 --[[Packer
 local packer_bootstrap = ensure_packer()
 require('packer').startup(function()
-	use 'hrsh7th/nvim-cmp'
-	use 'hrsh7th/cmp-nvim-lsp'
-	use 'L3MON4D3/LuaSnip'
-	use 'saadparwaiz1/cmp_luasnip'
-	use 'tpope/vim-sleuth'
 	use 'prettier/vim-prettier'
-
-	use 'neovim/nvim-lspconfig'
-	use 'nvim-treesitter/nvim-treesitter'
-
-	if packer_bootstrap then
-		require('packer').sync()
-	end
 end)]]
 
 require("ofirkai").setup { remove_italics = true }
