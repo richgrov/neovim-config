@@ -1,15 +1,5 @@
 vim.cmd.source(vim.fn.stdpath("config") .. "/vimrc.vim")
 
--- https://vimtricks.com/p/vimtrick-moving-lines/
-vim.keymap.set('n', '<C-j>', ':m .+1<CR>==', {noremap = true})
-vim.keymap.set('n', '<C-k>', ':m .-2<CR>==', {noremap = true})
-
-vim.keymap.set('i', '<C-j>', '<Esc>:m .+1<CR>==gi', {noremap = true})
-vim.keymap.set('i', '<C-k>', '<Esc>:m .-2<CR>==gi', {noremap = true})
-
-vim.keymap.set('v', '<C-j>', "'>+1<CR>gv=gv", {noremap = true})
-vim.keymap.set('v', '<C-k>', "'>-2<CR>gv=gv", {noremap = true})
-
 -- Packer
 local ensure_packer = function()
 	local fn = vim.fn
