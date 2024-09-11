@@ -81,6 +81,7 @@ require 'nvim-treesitter.configs'.setup{
 		enable = true,
 	}
 }
+vim.keymap.set("n", "=", require('fzf-lua').files, { desc = "Fzf Files" })
 
 local function setHighlight(color, groups)
 	for _, group in ipairs(groups) do
@@ -147,17 +148,6 @@ setHighlight('NONE', {
 	'Type',
 	'@constructor',
 })
-
-require('telescope').setup({
-	pickers = {
-		find_files = {
-			find_command = {'rg', '--files', '--hidden', '-g', '!.git'}
-		},
-	},
-})
-local telescope = require('telescope.builtin')
-vim.keymap.set('n', '-', telescope.find_files, { noremap = true, silent = true })
-vim.keymap.set('n', '+', telescope.lsp_dynamic_workspace_symbols, { noremap = true, silent = true })
 
 --require('nvim-autopairs').setup({})
 
