@@ -157,11 +157,11 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 
 local formatGroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
-function lsp_allowed(name)
+local function lsp_allowed(name)
 	return name ~= "html" and name ~= "cssls" and name ~= "tsserver" and name ~= "tailwindcss"
 end
 
-function lsp_attach(client, bufnr)
+local function lsp_attach(client, bufnr)
 	client.server_capabilities.semanticTokensProvider = nil
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
