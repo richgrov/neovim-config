@@ -55,12 +55,6 @@ require("lazy").setup({
 	},
 })
 
---[[Packer
-local packer_bootstrap = ensure_packer()
-require('packer').startup(function()
-	use 'prettier/vim-prettier'
-end)]]
-
 require("ofirkai").setup { remove_italics = true }
 
 vim.keymap.set("n", "=", require("fzf-lua").files, { desc = "Fzf Files" })
