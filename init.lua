@@ -49,6 +49,9 @@ require("lazy").setup({
 		{
 			"https://github.com/L3MON4D3/LuaSnip"
 		},
+		{
+			"https://github.com/ofirgall/ofirkai.nvim"
+		},
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
@@ -74,80 +77,9 @@ require('packer').startup(function()
 	end
 end)]]
 
--- Theme
+require("ofirkai").setup { remove_italics = true }
 
-require 'nvim-treesitter.configs'.setup{
-	highlight = {
-		enable = true,
-	}
-}
 vim.keymap.set("n", "=", require('fzf-lua').files, { desc = "Fzf Files" })
-
-local function setHighlight(color, groups)
-	for _, group in ipairs(groups) do
-		vim.api.nvim_set_hl(0, group, { ctermfg = color })
-	end
-end
-
-vim.api.nvim_set_hl(0, 'StatusLine', { ctermfg = 0, ctermbg = 7 })
-vim.api.nvim_set_hl(0, 'StatusLineNC', { ctermfg = 7, ctermbg = 'DarkGray' })
-vim.api.nvim_set_hl(0, 'NormalFloat', { ctermbg = 'DarkGray' })
-
-setHighlight(11, {
-	'@string',
-	'@string.special.url.html',
-	'@constant.builtin',
-	'@variable.constant',
-})
-
-setHighlight('DarkGray', {
-	'@comment',
-	'Comment',
-	'LineNr',
-	'EndOfBuffer',
-	'NvimTreeWinSeparator',
-	'@keyword.jsdoc',
-})
-setHighlight('Magenta', {
-	'@keyword',
-	'@tag',
-	'@include',
-	'@conditional',
-	'@repeat',
-	'@boolean',
-	'@storageclass',
-	'@exception',
-	'@type.qualifier',
-	'@number',
-	'@float',
-	'@function.macro',
-	'@function.builtin',
-	'@variable.builtin',
-	'@constant.builtin',
-	'@type.builtin.cpp',
-	'PreProc',
-})
-setHighlight('NONE', {
-	'@operator',
-	'@tag.delimiter',
-	'@tag.attribute',
-	'@namespace',
-	'@variable',
-	'Identifier',
-	'@constant',
-	'@parameter',
-	'@field',
-	'@property',
-	'@punctuation.bracket',
-	'@punctuation.delimiter',
-	'@punctuation.special',
-	'@definition.parameter',
-	'@function.builtin',
-	'@constructor.lua',
-	'@type',
-	'Type',
-	'@constructor',
-})
 
 --require('nvim-autopairs').setup({})
 
