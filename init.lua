@@ -32,7 +32,7 @@ require("lazy").setup({
 			config = function()
 				-- calling `setup` is optional for customization
 				require("fzf-lua").setup({})
-			end
+			end,
 		},
 		{ "tpope/vim-sleuth" },
 		{ "https://github.com/hrsh7th/nvim-cmp" },
@@ -124,8 +124,6 @@ for _, server in ipairs(servers) do
 				format = {
 					defaultConfig = {
 						quote_style = "double",
-						max_line_length = 100,
-						insert_final_newline = true,
 						trailing_table_separator = "smart",
 					},
 				},
@@ -142,7 +140,7 @@ cmp.setup({
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
-		end
+		end,
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-Space>"] = cmp.mapping.complete(),
