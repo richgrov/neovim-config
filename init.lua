@@ -40,6 +40,11 @@ require("lazy").setup({
 		{ "https://github.com/hrsh7th/cmp-nvim-lsp" },
 		{ "https://github.com/L3MON4D3/LuaSnip" },
 		{ "https://github.com/ofirgall/ofirkai.nvim" },
+		{
+			"windwp/nvim-autopairs",
+			event = "InsertEnter",
+			config = true,
+		},
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
@@ -68,8 +73,6 @@ end)]]
 require("ofirkai").setup { remove_italics = true }
 
 vim.keymap.set("n", "=", require("fzf-lua").files, { desc = "Fzf Files" })
-
---require('nvim-autopairs').setup({})
 
 vim.lsp.set_log_level("warn")
 local lspconfig = require("lspconfig")
