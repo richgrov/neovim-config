@@ -34,22 +34,12 @@ require("lazy").setup({
 				require("fzf-lua").setup({})
 			end
 		},
-		{
-			"tpope/vim-sleuth"
-		},
+		{ "tpope/vim-sleuth" },
 		{ "https://github.com/hrsh7th/nvim-cmp" },
-		{
-			"https://github.com/neovim/nvim-lspconfig"
-		},
-		{
-			"https://github.com/hrsh7th/cmp-nvim-lsp"
-		},
-		{
-			"https://github.com/L3MON4D3/LuaSnip"
-		},
-		{
-			"https://github.com/ofirgall/ofirkai.nvim"
-		},
+		{ "https://github.com/neovim/nvim-lspconfig" },
+		{ "https://github.com/hrsh7th/cmp-nvim-lsp" },
+		{ "https://github.com/L3MON4D3/LuaSnip" },
+		{ "https://github.com/ofirgall/ofirkai.nvim" },
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
@@ -77,15 +67,15 @@ end)]]
 
 require("ofirkai").setup { remove_italics = true }
 
-vim.keymap.set("n", "=", require('fzf-lua').files, { desc = "Fzf Files" })
+vim.keymap.set("n", "=", require("fzf-lua").files, { desc = "Fzf Files" })
 
 --require('nvim-autopairs').setup({})
 
 vim.lsp.set_log_level("warn")
-local lspconfig = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lspconfig = require("lspconfig")
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local formatGroup = vim.api.nvim_create_augroup('LspFormatting', {})
+local formatGroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local function lsp_allowed(name)
 	return name ~= "html" and name ~= "cssls" and name ~= "tsserver" and name ~= "tailwindcss"
@@ -94,16 +84,16 @@ end
 local function lsp_attach(client, bufnr)
 	client.server_capabilities.semanticTokensProvider = nil
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-	vim.keymap.set('n', 'rn', vim.lsp.buf.rename, bufopts)
-	vim.keymap.set('n', '<C-p>', vim.lsp.buf.signature_help, bufopts)
-	vim.keymap.set('n', '<C-q>', vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	vim.keymap.set("n", "rn", vim.lsp.buf.rename, bufopts)
+	vim.keymap.set("n", "<C-p>", vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set("n", "<C-q>", vim.lsp.buf.code_action, bufopts)
 
-	if lsp_allowed(client.name) and client.supports_method('textDocument/formatting') then
+	if lsp_allowed(client.name) and client.supports_method("textDocument/formatting") then
 		vim.api.nvim_clear_autocmds({ group = formatGroup, buffer = bufnr })
-		vim.api.nvim_create_autocmd('BufWritePre', {
+		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = formatGroup,
 			buffer = bufnr,
 			callback = function()
@@ -114,8 +104,8 @@ local function lsp_attach(client, bufnr)
 end
 
 local servers = {
-	'rust_analyzer', 'tailwindcss', 'gopls', 'pyright', 'html', 'cssls', 'tsserver', 'clangd',
-	'dartls', 'lua_ls'
+	"rust_analyzer", "tailwindcss", "gopls", "pyright", "html", "cssls", "tsserver", "clangd",
+	"dartls", "lua_ls"
 }
 
 for _, server in ipairs(servers) do
@@ -123,10 +113,20 @@ for _, server in ipairs(servers) do
 		settings = {
 			["rust-analyzer"] = {
 				procMacro = { enable = true },
-				assist = { importMergeBeavior = 'last' },
+				assist = { importMergeBeavior = "last" },
 				imports = {
 					granularity = {
 						group = "module",
+					},
+				},
+			},
+			["Lua"] = {
+				format = {
+					defaultConfig = {
+						quote_style = "double",
+						max_line_length = 100,
+						insert_final_newline = true,
+						trailing_table_separator = "smart",
 					},
 				},
 			},
@@ -136,8 +136,8 @@ for _, server in ipairs(servers) do
 	})
 end
 
-local cmp = require('cmp')
-local luasnip = require('luasnip')
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -145,14 +145,14 @@ cmp.setup({
 		end
 	},
 	mapping = cmp.mapping.preset.insert({
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<CR>'] = cmp.mapping.confirm({ select = true }),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
 	}),
 	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-		{ name = 'luasnip' },
-	}, { name = 'buffer '}),
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+	}, { name = "buffer " }),
 })
 
-vim.g['prettier#autoformat'] = 1
-vim.g['prettier#autoformat_require_pragma'] = 0
+vim.g["prettier#autoformat"] = 1
+vim.g["prettier#autoformat_require_pragma"] = 0
