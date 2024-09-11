@@ -40,6 +40,7 @@ require("lazy").setup({
 		{ "https://github.com/L3MON4D3/LuaSnip" },
 		{ "https://github.com/ofirgall/ofirkai.nvim" },
 		{ "https://github.com/prettier/vim-prettier" },
+		{ "nvim-lua/plenary.nvim" },
 		{
 			"windwp/nvim-autopairs",
 			event = "InsertEnter",
@@ -127,6 +128,8 @@ for _, server in ipairs(servers) do
 	})
 end
 
+dofile(vim.fn.stdpath("config") .. "/ollama.lua")
+
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 cmp.setup({
@@ -140,6 +143,7 @@ cmp.setup({
 		["<tab>"] = cmp.mapping.confirm({ select = true }),
 	}),
 	sources = cmp.config.sources({
+		{ name = "ollama" },
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 	}, { name = "buffer " }),
