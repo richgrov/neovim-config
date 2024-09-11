@@ -39,6 +39,7 @@ require("lazy").setup({
 		{ "https://github.com/hrsh7th/cmp-nvim-lsp" },
 		{ "https://github.com/L3MON4D3/LuaSnip" },
 		{ "https://github.com/ofirgall/ofirkai.nvim" },
+		{ "https://github.com/prettier/vim-prettier" },
 		{
 			"windwp/nvim-autopairs",
 			event = "InsertEnter",
@@ -140,6 +141,3 @@ cmp.setup({
 		{ name = "luasnip" },
 	}, { name = "buffer " }),
 })
-
-vim.g["prettier#autoformat"] = 1
-vim.g["prettier#autoformat_require_pragma"] = 0
