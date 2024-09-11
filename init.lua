@@ -48,7 +48,10 @@ require("lazy").setup({
 	},
 	-- colorscheme that will be used when installing plugins.
 	-- automatically check for plugin updates
-	checker = { enabled = true },
+	checker = {
+		enabled = true,
+		notify = false,
+	},
 })
 
 --[[Packer
