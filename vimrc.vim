@@ -13,5 +13,7 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 
 autocmd BufNewFile,BufRead *.ino :set filetype=cpp
 
+nnoremap <C-h> :AvanteAsk<CR>
+
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
