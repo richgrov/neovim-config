@@ -51,7 +51,7 @@ require("lazy").setup({
 			config = {
 				version = false,
 				lazy = false,
-				build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false",
+				build = "make",
 				provider = "claude",
 			},
 		},
