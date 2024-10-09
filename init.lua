@@ -38,7 +38,6 @@ require("lazy").setup({
 		{ "https://github.com/neovim/nvim-lspconfig" },
 		{ "https://github.com/hrsh7th/cmp-nvim-lsp" },
 		{ "https://github.com/L3MON4D3/LuaSnip" },
-		{ "https://github.com/ofirgall/ofirkai.nvim" },
 		{ "https://github.com/prettier/vim-prettier" },
 		{ "nvim-lua/plenary.nvim" },
 		{
@@ -68,8 +67,6 @@ require("lazy").setup({
 		notify = false,
 	},
 })
-
-require("ofirkai").setup { remove_italics = true }
 
 vim.keymap.set("n", "=", require("fzf-lua").files, { desc = "Fzf Files" })
 
