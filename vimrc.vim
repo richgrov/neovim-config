@@ -3,7 +3,7 @@ set relativenumber
 set tabstop=3
 set shiftwidth=3
 
-colorscheme zaibatsu
+colorscheme habamax
 
 " https://vimtricks.com/p/vimtrick-moving-lines/
 nnoremap <C-j> :m .+1<CR>==
