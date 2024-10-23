@@ -104,7 +104,7 @@ end
 
 local servers = {
 	"rust_analyzer", "tailwindcss", "gopls", "pyright", "html", "cssls", "ts_ls", "clangd",
-	"dartls", "lua_ls", "jdtls",
+	"dartls", "lua_ls", "jdtls", "astro",
 }
 
 for _, server in ipairs(servers) do
