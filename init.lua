@@ -68,7 +68,9 @@ require("lazy").setup({
 	},
 })
 
-vim.keymap.set("n", "=", require("fzf-lua").files, { desc = "Fzf Files" })
+local fzf = require("fzf-lua");
+
+vim.keymap.set("n", "=", fzf.files, { desc = "Fzf Files" })
 
 vim.lsp.set_log_level("warn")
 local lspconfig = require("lspconfig")
@@ -85,6 +87,7 @@ local function lsp_attach(client, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+	vim.keymap.set("n", "gr", fzf.lsp_references, bufopts)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 	vim.keymap.set("n", "rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "<C-p>", vim.lsp.buf.signature_help, bufopts)
