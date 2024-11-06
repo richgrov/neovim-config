@@ -79,7 +79,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protoc
 local formatGroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local function lsp_allowed(name)
-	return name ~= "html" and name ~= "cssls" and name ~= "ts_ls" and name ~= "tailwindcss"
+	return name ~= "html" and name ~= "cssls" and name ~= "ts_ls"
 end
 
 local function lsp_attach(client, bufnr)
