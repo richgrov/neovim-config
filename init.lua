@@ -130,6 +130,11 @@ for _, server in ipairs(servers) do
 					},
 				},
 			},
+			["python"] = {
+				analysis = {
+					typeCheckingMode = "off",
+				},
+			},
 		},
 		capabilities = capabilities,
 		on_attach = lsp_attach,
