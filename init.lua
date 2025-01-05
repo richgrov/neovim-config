@@ -135,6 +135,11 @@ for _, server in ipairs(servers) do
 					typeCheckingMode = "off",
 				},
 			},
+			["jdtls"] = {
+				format = {
+					enabled = true,
+				},
+			},
 		},
 		capabilities = capabilities,
 		on_attach = lsp_attach,
