@@ -59,6 +59,17 @@ require("lazy").setup({
 			event = "InsertEnter",
 			config = true,
 		},
+		{
+			"TabbyML/vim-tabby",
+			lazy = false,
+			dependencies = {
+				"neovim/nvim-lspconfig",
+			},
+			init = function()
+				vim.g.tabby_agent_start_command = { "bunx", "tabby-agent", "--stdio" }
+				vim.g.tabby_inline_completion_trigger = "auto"
+			end,
+		},
 	},
 	-- colorscheme that will be used when installing plugins.
 	-- automatically check for plugin updates
@@ -146,8 +157,6 @@ for _, server in ipairs(servers) do
 	})
 end
 
-dofile(vim.fn.stdpath("config") .. "/ollama.lua")
-
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 cmp.setup({
@@ -161,7 +170,6 @@ cmp.setup({
 		["<tab>"] = cmp.mapping.confirm({ select = true }),
 	}),
 	sources = cmp.config.sources({
-		{ name = "ollama" },
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 	}, { name = "buffer " }),
