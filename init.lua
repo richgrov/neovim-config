@@ -121,6 +121,11 @@ local servers = {
 }
 
 for _, server in ipairs(servers) do
+	local filetypes = nil
+	if server == "clangd" then
+		filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "mm" }
+	end
+
 	lspconfig[server].setup({
 		settings = {
 			["rust-analyzer"] = {
@@ -153,6 +158,7 @@ for _, server in ipairs(servers) do
 		},
 		capabilities = capabilities,
 		on_attach = lsp_attach,
+		filetypes = filetypes,
 	})
 end
 
