@@ -175,7 +175,7 @@ cmp.setup({
 		["<tab>"] = cmp.mapping.confirm({ select = true }),
 	}),
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
+		{ name = "nvim_lsp", keyword_length = 2 },
 		{ name = "luasnip" },
 	}, { name = "buffer " }),
 })
