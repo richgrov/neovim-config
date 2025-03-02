@@ -39,21 +39,6 @@ require("lazy").setup({
 		{ "https://github.com/hrsh7th/cmp-nvim-lsp" },
 		{ "https://github.com/L3MON4D3/LuaSnip" },
 		{ "https://github.com/prettier/vim-prettier" },
-		{ "nvim-lua/plenary.nvim" },
-		{
-			"https://github.com/yetone/avante.nvim",
-			dependencies = {
-				"stevearc/dressing.nvim",
-				"MunifTanjim/nui.nvim",
-				"nvim-lua/plenary.nvim",
-			},
-			config = {
-				version = false,
-				lazy = false,
-				build = "make",
-				provider = "claude",
-			},
-		},
 		{
 			"windwp/nvim-autopairs",
 			event = "InsertEnter",
