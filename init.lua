@@ -164,3 +164,12 @@ cmp.setup({
 		{ name = "luasnip" },
 	}, { name = "buffer " }),
 })
+
+vim.api.nvim_create_user_command("AutoTheme", function()
+	local brightness = vim.fn.system("brightness -l | grep brightness | awk '{print $NF}'")
+	if tonumber(brightness) >= 0.9 then
+		vim.cmd("colorscheme delek")
+	else
+		vim.cmd("colorscheme habamax")
+	end
+end, { desc = "Auto-adjusts the theme based on the system's brightness level" })
