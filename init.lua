@@ -37,7 +37,6 @@ require("lazy").setup({
 		{ "https://github.com/hrsh7th/nvim-cmp" },
 		{ "https://github.com/neovim/nvim-lspconfig" },
 		{ "https://github.com/hrsh7th/cmp-nvim-lsp" },
-		{ "https://github.com/L3MON4D3/LuaSnip" },
 		{ "https://github.com/prettier/vim-prettier" },
 		{
 			"windwp/nvim-autopairs",
@@ -148,20 +147,13 @@ for _, server in ipairs(servers) do
 end
 
 local cmp = require("cmp")
-local luasnip = require("luasnip")
 cmp.setup({
-	snippet = {
-		expand = function(args)
-			luasnip.lsp_expand(args.body)
-		end,
-	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-x>"] = cmp.mapping.complete(),
 		["<tab>"] = cmp.mapping.confirm({ select = true }),
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp", keyword_length = 2 },
-		{ name = "luasnip" },
 	}, { name = "buffer " }),
 })
 
