@@ -5,6 +5,9 @@ set shiftwidth=3
 
 colorscheme habamax
 
+command! W write
+command! Q quit
+
 " https://vimtricks.com/p/vimtrick-moving-lines/
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
