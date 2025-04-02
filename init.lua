@@ -55,6 +55,7 @@ require("lazy").setup({
 				vim.g.tabby_inline_completion_keybinding_accept = "<C-/>"
 			end,
 		},
+		{ "joshuavial/aider.nvim", config = true },
 	},
 	checker = {
 		enabled = true,
