@@ -55,7 +55,15 @@ require("lazy").setup({
 				vim.g.tabby_inline_completion_keybinding_accept = "<C-/>"
 			end,
 		},
-		{ "joshuavial/aider.nvim", config = true },
+		{
+			"greggh/claude-code.nvim",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+			},
+			config = function()
+				require("claude-code").setup()
+			end,
+		},
 	},
 	checker = {
 		enabled = true,
